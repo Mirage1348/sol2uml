@@ -1,31 +1,28 @@
 # Example UML Diagrams
 
-## Crypto Kitties
+See [Account Abstraction](./accountAbstraction/README.md) for example diagrams against [ERC-4337](https://eips.ethereum.org/EIPS/eip-4337) contracts.
 
-![CryptoKitties](./cryptoKitties.svg)
+## Bored Ape Yacht Club NFT
+
+![Bored Ape Yacht Club NFT](./BoredApeYachtClub.svg)
 Generated from running
+
 ```
-sol2uml 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d
+sol2uml 0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D
 ```
-This uses the verified Solidity code loaded to Etherscan https://etherscan.io/address/0x06012c8cf97BEaD5deAe237070F9587f8E7A266d#code
+
+This uses the verified Solidity code loaded to Etherscan https://etherscan.io/address/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d#code
 
 ## Open Zeppelin ERC20 Tokens
 
 ![Open Zeppelin ERC20](./OpenZeppelinERC20.svg)
-Generated from version [2.3.0 contracts/token/ERC20](https://github.com/OpenZeppelin/openzeppelin-solidity/tree/v2.3.0/contracts/token/ERC20)
-
-## Open Zeppelin Base Contract
-
-![Open Zeppelin Base Contract](./OzToken.svg)
-Generated from version [2.5.1 contracts](https://github.com/OpenZeppelin/openzeppelin-solidity/tree/v2.5.1/contracts) with
-```
-sol2uml -b OzToken
-```
+Generated from version [4.7.3 contracts/token/ERC20](https://github.com/OpenZeppelin/openzeppelin-contracts/tree/v4.7.3/contracts/token/ERC20)
 
 ## mStable mUSD on Polygon
 
 ![Polygon mUSD](./polygonMusd.svg)
 Generated from running
+
 ```
 sol2uml -n polygon 0xcA9cf48aD534f1efA2B0f6923457F2953df86e0b
 ```
@@ -34,54 +31,88 @@ sol2uml -n polygon 0xcA9cf48aD534f1efA2B0f6923457F2953df86e0b
 
 ![BSC Crypto Blades](./bscCryptoBlades.svg)
 Generated from running
+
 ```
 sol2uml -n bsc 0xB07c1C479b2Fdeb9f9B2d02300C13b328BF86d65
 ```
 
 ## Open Zeppelin All
-![Open Zeppelin ERC20](./OpenZeppelinAll.svg)
-Generated from version [2.5.1 contracts](https://github.com/OpenZeppelin/openzeppelin-solidity/tree/v2.5.1/contracts)
 
-## MakerDAO's SAI Token
-![MakerDAO](./MakerDAO_SAI.svg)
-Generated from GitHub commit [84c682eeb4e27264503370ef5aafcb9ee3217acb](https://github.com/makerdao/sai/tree/84c682eeb4e27264503370ef5aafcb9ee3217acb/src) of makerdao/sai/src
+![Open Zeppelin ERC20](./OpenZeppelinAll.svg)
+Generated from version [4.7.3 contracts](https://github.com/OpenZeppelin/openzeppelin-contracts/tree/v4.7.3/contracts)
+
+## Uniswap V3 Router
+
+-   -hp hide private and internal variables and functions
+-   -hi hide interfaces
+-   -hl hide libraries
+-   -he hide enums
+
+![Uniswap V3 Router](./uniswap-router.svg)
+Generated from running
+
+```
+sol2uml -hp -hi -hl -hs -he 0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45
+```
+
+This uses the verified Solidity code loaded to Etherscan https://etherscan.io/address/0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45#code
+
+## Uniswap V3 Router Squashed
+
+Same as the previous diagram but the inherited contracts are squashed into a single class diagram with the `-s, --squash` option.
+
+The last stereotype is the contract the variable or function is implemented in. For example, `unwrapWETH9` is implemented in the `PeripheryPaymentsWithFeeExtended` contract.
+
+![Uniswap V3 Router Squashed](./uniswap-router-squash.svg)
+
+Generated from running
+
+```
+sol2uml -s -hp -hi -hl -hs -he 0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45
+```
+
+## Uniswap V3 Router Squashed No Source
+
+Adding the `-hsc, --hideSourceContract` option to the previous diagram removes the stereotype with the source contract the variable or function was implemented in.
+
+![Uniswap V3 Router Squashed no source contract](./uniswap-router-squash-no-source.svg)
+
+Generated from running
+
+```
+sol2uml -s -hsc -hp -hi -hl -hs -he 0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45
+```
 
 ## Tether
+
 ![Tether](./tether.svg)
 Generated from running
+
 ```
 sol2uml 0xdAC17F958D2ee523a2206206994597C13D831ec7
 ```
+
 This uses the verified Solidity code loaded to Etherscan https://etherscan.io/address/0xdac17f958d2ee523a2206206994597c13d831ec7#code
 
-## 0x
-![0x Protocol v2 Exchange](./0xv2.svg)
-Generated from running
-```
-sol2uml 0x4F833a24e1f95D70F028921e27040Ca56E09AB0b
-```
-This uses the verified Solidity code loaded to Etherscan https://etherscan.io/address/0x4F833a24e1f95D70F028921e27040Ca56E09AB0b#code
-
 ## Compound Finance's cDAI
-![Compound Finance cDAI](./cDAI.svg)
+
+![Compound Finance cDAI](./CErc20.svg)
 Generated from running
+
 ```
 sol2uml 0xf5dce57282a584d2746faf1593d3121fcac444dc
 ```
+
 This uses the verified Solidity code loaded to Etherscan https://etherscan.io/address/0xf5dce57282a584d2746faf1593d3121fcac444dc#code
 
-## Chainlink
-![Chainlink](./chainlink.svg)
-Generated from running
-```bash
-sol2uml 0x79fEbF6B9F76853EDBcBc913e6aAE8232cFB9De9
-```
-This uses the verified Solidity code loaded to Etherscan https://etherscan.io/address/0x79fEbF6B9F76853EDBcBc913e6aAE8232cFB9De9#code
+## Compound Finance's cDAI Hide
 
-## Augur
-![Augur](./augur.svg)
+Same as the previous except enums, stucts and interfaces are hidden.
+Also, only classes linked to the base `CErc20` contract are included.
+
+![Compound Finance cDAI](./CErc20-hide.svg)
 Generated from running
-```bash
-sol2uml 0x7F27B0598949DbF9e539BBD217f15BF3F5E97999
+
 ```
-This uses the verified Solidity code loaded to Etherscan https://etherscan.io/address/0x7F27B0598949DbF9e539BBD217f15BF3F5E97999#code
+sol2uml -b CErc20 -he -hs -hi 0xf5dce57282a584d2746faf1593d3121fcac444dc
+```

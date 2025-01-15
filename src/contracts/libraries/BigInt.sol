@@ -1,4 +1,4 @@
-pragma solidity ^0.5.10;
+pragma solidity ^0.8.10;
 
 library BigInt {
     struct bigint {
@@ -17,7 +17,7 @@ library BigInt {
             uint a = limb(_a, i);
             uint b = limb(_b, i);
             r.limbs[i] = a + b + carry;
-            if (a + b < a || (a + b == uint(-1) && carry > 0))
+            if (a + b < a || (a + b == type(uint256).max && carry > 0))
                 carry = 1;
             else
                 carry = 0;
